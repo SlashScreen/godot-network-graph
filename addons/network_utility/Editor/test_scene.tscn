@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c06o33v04b0wn"]
+[gd_scene load_steps=12 format=3 uid="uid://c06o33v04b0wn"]
 
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="1_w8i8y"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="2_hjkjk"]
@@ -25,9 +25,25 @@ script = ExtResource("2_hjkjk")
 points = Array[ExtResource("2_np155")]([SubResource("Resource_bj2mu"), SubResource("Resource_j8fi1")])
 edges = Array[ExtResource("3_7uth3")]([SubResource("Resource_jhiym")])
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_0bekn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3spd"]
+albedo_color = Color(0.364706, 0.14902, 0.145098, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cnb7c"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="NetworkInstance" type="Node3D" parent="."]
 script = ExtResource("1_w8i8y")
 network = SubResource("Resource_8jmi5")
 metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_0bekn")
+surface_material_override/0 = SubResource("StandardMaterial3D_c3spd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_cnb7c")

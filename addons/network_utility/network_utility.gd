@@ -17,7 +17,6 @@ var target:Network:
 		if target == val: # Prevent reinitializing a whole lot. may be redundant.
 			return
 		target = val
-		print(not val == null)
 		_set_toolbar_visibility(not val == null) # set toolbar visibility to true if it isnt null
 
 
