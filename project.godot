@@ -20,4 +20,4 @@ project/assembly_name="NavNetworkPlugin"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/nav_network_utility/plugin.cfg")
+enabled=PackedStringArray("res://addons/network_utility/plugin.cfg")

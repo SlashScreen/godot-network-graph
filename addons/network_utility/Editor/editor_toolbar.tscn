@@ -13,8 +13,8 @@ script = ExtResource("1_yifem")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 305.0
+offset_bottom = 31.0
 
 [node name="Add" type="Button" parent="HBoxContainer"]
 layout_mode = 2
@@ -47,3 +47,9 @@ flat = true
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
+
+[connection signal="toggled" from="HBoxContainer/Add" to="." method="_on_add_toggled"]
+[connection signal="pressed" from="HBoxContainer/Link" to="." method="_on_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/Remove" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="HBoxContainer/Merge" to="." method="_on_merge_pressed"]
+[connection signal="pressed" from="HBoxContainer/Dissolve" to="." method="_on_dissolve_pressed"]

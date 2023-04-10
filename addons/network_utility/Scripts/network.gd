@@ -43,6 +43,10 @@ func remove_point(pt:NetworkPoint) -> void:
 ## Dissolve a point in the network, connecting all nodes it was connected to together. See [method remove_point].
 func dissolve_point(pt:NetworkPoint) -> void:
 	# TODO: Cost?
+	# Just delete the node if there is 0 or 1 connections, since there's nothing to dissolve
+	if edge_map[pt].size() <= 1:
+		remove_point(pt)
+		return
 	# The nodes this point was connected to, so we can connect them to eachother.
 	var to_connect = []
 	# Loop through edges and get the other point.
