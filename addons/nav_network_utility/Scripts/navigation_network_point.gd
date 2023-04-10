@@ -1,5 +1,5 @@
 @tool
-class_name NavigationNetworkPoint
+class_name NetworkPoint
 extends Resource
 
 

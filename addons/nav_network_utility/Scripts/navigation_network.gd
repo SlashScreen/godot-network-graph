@@ -1,21 +1,21 @@
 @tool
-class_name NavigationNetwork
+class_name Network
 extends Resource
 ## This is the network graph itself, containing nodes and edges.
 
 
 ## The points in this network.
-@export var points:Array[NavigationNetworkPoint] = []
+@export var points:Array[NetworkPoint] = []
 ## The edges in this network.
-@export var edges:Array[NavigationNetworkEdge] = []
+@export var edges:Array[NetworkEdge] = []
 ## This dictionary contains an array (value) of edges that involve a point (key).
 var edge_map:Dictionary = {}
 
 
 ## Add a point to this network.
-func add_point(pt:Vector3) -> NavigationNetworkPoint:
+func add_point(pt:Vector3) -> NetworkPoint:
 	# Create edge
-	var new_point = NavigationNetworkPoint.new(pt)
+	var new_point = NetworkPoint.new(pt)
 	# Initialize map entry
 	edge_map[new_point] = []
 	# Add to points
@@ -25,7 +25,7 @@ func add_point(pt:Vector3) -> NavigationNetworkPoint:
 
 
 ## Remove a point from the network and all associated connections. See [method dissolve_point].
-func remove_point(pt:NavigationNetworkPoint) -> void:
+func remove_point(pt:NetworkPoint) -> void:
 	points.erase(pt)
 	# Remove all edges involving this node
 	for edge in edge_map[pt]:
@@ -41,7 +41,7 @@ func remove_point(pt:NavigationNetworkPoint) -> void:
 
 
 ## Dissolve a point in the network, connecting all nodes it was connected to together. See [method remove_point].
-func dissolve_point(pt:NavigationNetworkPoint) -> void:
+func dissolve_point(pt:NetworkPoint) -> void:
 	# TODO: Cost?
 	# The nodes this point was connected to, so we can connect them to eachother.
 	var to_connect = []
@@ -56,7 +56,7 @@ func dissolve_point(pt:NavigationNetworkPoint) -> void:
 
 
 ## Merge two points together and reconnect all connections.
-func merge_points(a:NavigationNetworkPoint, b:NavigationNetworkPoint) -> NavigationNetworkPoint:
+func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 	# Create a new node from the average of 2 points
 	var new_node = add_point((a.position + b.position)/2)
 	# Track other edges to reconnect to the new node
@@ -87,9 +87,9 @@ func merge_points(a:NavigationNetworkPoint, b:NavigationNetworkPoint) -> Navigat
 
 
 ## Add an edge to this network.
-func add_edge(a:NavigationNetworkPoint, b:NavigationNetworkPoint, cost:float = 1, bidirectional:bool = true) -> NavigationNetworkEdge:
+func add_edge(a:NetworkPoint, b:NetworkPoint, cost:float = 1, bidirectional:bool = true) -> NetworkEdge:
 	# Create edge
-	var edge = NavigationNetworkEdge.new(a, b, cost, bidirectional)
+	var edge = NetworkEdge.new(a, b, cost, bidirectional)
 	# Add this edge to the edge map
 	edge_map[a].append(edge)
 	edge_map[b].append(edge)
@@ -100,7 +100,7 @@ func add_edge(a:NavigationNetworkPoint, b:NavigationNetworkPoint, cost:float = 1
 
 
 ## Remove an edge from the network.
-func remove_edge(edge:NavigationNetworkEdge) -> void:
+func remove_edge(edge:NetworkEdge) -> void:
 	# Erase edge map entry on both sides
 	edge_map[edge.point_a].erase(edge)
 	edge_map[edge.point_b].erase(edge)
