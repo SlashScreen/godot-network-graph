@@ -1,22 +1,31 @@
+@tool
 class_name NetworkEditorUtility
 extends Control
 
 
-func _on_add_toggled(button_pressed:bool) -> void:
-	pass # Replace with function body.
+var add_mode:bool
 
+
+signal dissolve
+signal merge
+signal remove
+signal link
+
+
+func _on_add_toggled(button_pressed:bool) -> void:
+	add_mode = button_pressed
 
 func _on_dissolve_pressed() -> void:
-	pass # Replace with function body.
+	dissolve.emit()
 
 
 func _on_merge_pressed() -> void:
-	pass # Replace with function body.
+	merge.emit()
 
 
 func _on_remove_pressed() -> void:
-	pass # Replace with function body.
+	remove.emit()
 
 
 func _on_link_pressed() -> void:
-	pass # Replace with function body.
+	link.emit()
