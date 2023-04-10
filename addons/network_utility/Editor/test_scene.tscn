@@ -7,11 +7,11 @@
 
 [sub_resource type="Resource" id="Resource_bj2mu"]
 script = ExtResource("2_np155")
-position = Vector3(0, 0, 0)
+position = Vector3(-0.446439, 0, -0.404762)
 
 [sub_resource type="Resource" id="Resource_j8fi1"]
 script = ExtResource("2_np155")
-position = Vector3(1, 0, 1)
+position = Vector3(0.566059, 0, 0.703653)
 
 [sub_resource type="Resource" id="Resource_jhiym"]
 script = ExtResource("3_7uth3")

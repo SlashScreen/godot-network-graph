@@ -6,7 +6,18 @@ const RAY_LENGTH:float = 500
 
 ## Association of handle index to associated point.
 var handle_associations:Array[NetworkPoint] = []
-var last_modified:NetworkPoint
+## The most recent selected point.
+var last_modified:NetworkPoint:
+	get:
+		return last_modified
+	set(val):
+		# Prevent spam by checking if val is different
+		if last_modified == val:
+			return
+		second_last_modified = last_modified # move value to the second last modified
+		last_modified = val
+## Second last point that was selected.
+var second_last_modified:NetworkPoint
 
 
 func _init() -> void:
@@ -45,7 +56,7 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 		t.origin = n.position
 		# Draw node sphere and handle
 		handle_pts.append(n.position)
-		gizmo.add_mesh(mesh, get_material("point_unselected", gizmo), t)
+		gizmo.add_mesh(mesh, _get_material_for_point(n, gizmo), t)
 		# Handle indexes
 		handle_associations[idx] = n
 		handle_idx.append(idx)
@@ -80,8 +91,19 @@ func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, came
 	await gizmo.get_node_3d().get_tree().physics_frame
 	# Cast ray
 	var hits = gizmo.get_node_3d().get_world_3d().direct_space_state.intersect_ray(ray)
-	#print(hits)
 	if hits:
 		pt.position = hits["position"] as Vector3 # Set point position to handle
 		last_modified = pt # set last modified
 		_redraw(gizmo) # TODO: Don't update the whole thing (?)
+
+
+## Get the material for the point. This changed the material based on how recently it was selected.
+func _get_material_for_point(pt:NetworkPoint, gizmo: EditorNode3DGizmo) -> Material:
+	# If last modified
+	if last_modified == pt:
+		return get_material("point_select0", gizmo)
+	# If second last modified
+	if second_last_modified == pt:
+		return get_material("point_select1", gizmo)
+	# Else unselected
+	return get_material("point_unselected", gizmo)
