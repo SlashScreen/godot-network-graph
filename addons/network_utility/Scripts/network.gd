@@ -1,4 +1,3 @@
-@tool
 class_name Network
 extends Resource
 ## This is the network graph itself, containing nodes and edges.

@@ -1,15 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://c06o33v04b0wn"]
+[gd_scene load_steps=9 format=3 uid="uid://c06o33v04b0wn"]
 
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="1_w8i8y"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="2_hjkjk"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="2_np155"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_edge.gd" id="3_7uth3"]
+
+[sub_resource type="Resource" id="Resource_bj2mu"]
+script = ExtResource("2_np155")
+position = Vector3(0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_j8fi1"]
+script = ExtResource("2_np155")
+position = Vector3(1, 0, 1)
+
+[sub_resource type="Resource" id="Resource_jhiym"]
+script = ExtResource("3_7uth3")
+point_a = SubResource("Resource_bj2mu")
+point_b = SubResource("Resource_j8fi1")
+cost = 1.0
+bidirectional = true
 
 [sub_resource type="Resource" id="Resource_8jmi5"]
 script = ExtResource("2_hjkjk")
-points = Array[Resource("res://addons/network_utility/Scripts/network_point.gd")]([])
-edges = Array[Resource("res://addons/network_utility/Scripts/network_edge.gd")]([])
+points = Array[ExtResource("2_np155")]([SubResource("Resource_bj2mu"), SubResource("Resource_j8fi1")])
+edges = Array[ExtResource("3_7uth3")]([SubResource("Resource_jhiym")])
 
 [node name="Node3D" type="Node3D"]
 
-[node name="NetworkInstance3D" type="Node3D" parent="."]
+[node name="NetworkInstance" type="Node3D" parent="."]
 script = ExtResource("1_w8i8y")
 network = SubResource("Resource_8jmi5")
+metadata/_edit_lock_ = true
