@@ -2,6 +2,7 @@
 extends EditorPlugin
 
 
+var toolbar = load("addons/network_utility/Editor/editor_toolbar.tscn")
 var network_gizmo:NetworkGizmo = NetworkGizmo.new()
 
 
