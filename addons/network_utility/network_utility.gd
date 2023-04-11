@@ -49,6 +49,10 @@ func _exit_tree() -> void:
 	remove_node_3d_gizmo_plugin(network_gizmo)
 
 
+func _handles(object: Object) -> bool:
+	return object is NetworkInstance
+
+
 func _selection_changed() -> void:
 	# Get selected nodes
 	var selections = get_editor_interface()\
@@ -127,7 +131,7 @@ func _add_point(camera: Camera3D, event: InputEventMouseButton) -> void:
 	if not _target_node:
 		return
 	var hit_pos:Vector3
-	
+
 	# Step 1: find hit point
 	var from = camera.project_ray_origin(event.position)
 	var to = from + (camera.project_ray_normal(event.position) * RAY_LENGTH)
