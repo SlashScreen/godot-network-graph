@@ -70,7 +70,6 @@ func _selection_changed() -> void:
 	target = null
 
 
-
 func _forward_3d_gui_input(viewport_camera: Camera3D, event: InputEvent) -> int:
 	# if no utility, pass
 	if not utility:

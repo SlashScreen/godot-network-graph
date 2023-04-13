@@ -1,3 +1,4 @@
+@tool
 class_name NetworkInstance
 extends Node3D
 

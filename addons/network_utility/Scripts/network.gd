@@ -1,3 +1,4 @@
+@tool
 class_name Network
 extends Resource
 ## This is the network graph itself, containing nodes and edges.
@@ -8,7 +9,7 @@ extends Resource
 ## The edges in this network.
 @export var edges:Array[NetworkEdge] = []
 ## This dictionary contains an array (value) of edges that involve a point (key).
-var edge_map:Dictionary = {}
+@export var edge_map:Dictionary = {}
 
 
 ## Add a point to this network.
@@ -94,7 +95,16 @@ func add_edge(a:NetworkPoint, b:NetworkPoint, cost:float = 1, bidirectional:bool
 	# Create edge
 	var edge = NetworkEdge.new(a, b, cost, bidirectional)
 	# Add this edge to the edge map
+
+	# Add edge maps if they dont exist
+	if not edge_map.has(a):
+		edge_map[a] = []
+
 	edge_map[a].append(edge)
+
+	if not edge_map.has(b):
+		edge_map[b] = []
+
 	edge_map[b].append(edge)
 	# Add to edges
 	edges.append(edge)
