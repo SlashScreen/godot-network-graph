@@ -1,158 +1,157 @@
-[gd_scene load_steps=33 format=3 uid="uid://c06o33v04b0wn"]
+[gd_resource type="Resource" script_class="Network" load_steps=28 format=3 uid="uid://cx0crpuwav4l3"]
 
-[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="1_w8i8y"]
-[ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="2_hjkjk"]
-[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="2_np155"]
-[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_edge.gd" id="3_7uth3"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="1_rxvme"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_edge.gd" id="2_impnr"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="3_d8bkg"]
 
 [sub_resource type="Resource" id="Resource_6d5to"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(-0.532869, 0, 0.597602)
 
 [sub_resource type="Resource" id="Resource_j8fi1"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(0.659532, 0, 0.520764)
 
 [sub_resource type="Resource" id="Resource_t7vsf"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_6d5to")
 point_b = SubResource("Resource_j8fi1")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_bj2mu"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(-0.382284, 0, -0.401735)
 
 [sub_resource type="Resource" id="Resource_6ryto"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_bj2mu")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_gjk6u"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_6d5to")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_0t7n1"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(-0.779595, 1.19209e-07, -0.000778377)
 
 [sub_resource type="Resource" id="Resource_rmifb"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_0t7n1")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_hcrv3"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_bj2mu")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_7bbg2"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_bj2mu")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_6lrjw"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_0t7n1")
 point_b = SubResource("Resource_6d5to")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_hjtpt"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(0.661374, 0, -0.152911)
 
 [sub_resource type="Resource" id="Resource_ts6fs"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_j8fi1")
 point_b = SubResource("Resource_hjtpt")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_73akb"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(-0.106832, 1.19209e-07, -0.764275)
 
 [sub_resource type="Resource" id="Resource_ix3gp"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_73akb")
 point_b = SubResource("Resource_bj2mu")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_wv4kk"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(0.415217, 0, -0.518229)
 
 [sub_resource type="Resource" id="Resource_1ckt5"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_wv4kk")
 point_b = SubResource("Resource_bj2mu")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_vff0f"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_bj2mu")
 point_b = SubResource("Resource_hjtpt")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_25ygv"]
-script = ExtResource("2_np155")
+script = ExtResource("1_rxvme")
 position = Vector3(-0.781907, 0, -0.668562)
 
 [sub_resource type="Resource" id="Resource_g85cn"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_25ygv")
 point_b = SubResource("Resource_0t7n1")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_jcyh8"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_73akb")
 point_b = SubResource("Resource_25ygv")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_b7bdw"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_wv4kk")
 point_b = SubResource("Resource_73akb")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_wcfoj"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_hjtpt")
 point_b = SubResource("Resource_wv4kk")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_jhiym"]
-script = ExtResource("3_7uth3")
+script = ExtResource("2_impnr")
 point_a = SubResource("Resource_bj2mu")
 point_b = SubResource("Resource_j8fi1")
 cost = 1.0
 bidirectional = true
 
-[sub_resource type="Resource" id="Resource_8jmi5"]
-script = ExtResource("2_hjkjk")
-points = Array[ExtResource("2_np155")]([SubResource("Resource_bj2mu"), SubResource("Resource_j8fi1"), SubResource("Resource_6d5to"), SubResource("Resource_0t7n1"), SubResource("Resource_25ygv"), SubResource("Resource_73akb"), SubResource("Resource_wv4kk"), SubResource("Resource_hjtpt")])
-edges = Array[ExtResource("3_7uth3")]([SubResource("Resource_jhiym"), SubResource("Resource_t7vsf"), SubResource("Resource_6ryto"), SubResource("Resource_gjk6u"), SubResource("Resource_rmifb"), SubResource("Resource_hcrv3"), SubResource("Resource_7bbg2"), SubResource("Resource_6lrjw"), SubResource("Resource_g85cn"), SubResource("Resource_jcyh8"), SubResource("Resource_b7bdw"), SubResource("Resource_wcfoj"), SubResource("Resource_ts6fs"), SubResource("Resource_ix3gp"), SubResource("Resource_1ckt5"), SubResource("Resource_vff0f")])
+[resource]
+script = ExtResource("3_d8bkg")
+points = Array[ExtResource("1_rxvme")]([SubResource("Resource_bj2mu"), SubResource("Resource_j8fi1"), SubResource("Resource_6d5to"), SubResource("Resource_0t7n1"), SubResource("Resource_25ygv"), SubResource("Resource_73akb"), SubResource("Resource_wv4kk"), SubResource("Resource_hjtpt")])
+edges = Array[ExtResource("2_impnr")]([SubResource("Resource_jhiym"), SubResource("Resource_t7vsf"), SubResource("Resource_6ryto"), SubResource("Resource_gjk6u"), SubResource("Resource_rmifb"), SubResource("Resource_hcrv3"), SubResource("Resource_7bbg2"), SubResource("Resource_6lrjw"), SubResource("Resource_g85cn"), SubResource("Resource_jcyh8"), SubResource("Resource_b7bdw"), SubResource("Resource_wcfoj"), SubResource("Resource_ts6fs"), SubResource("Resource_ix3gp"), SubResource("Resource_1ckt5"), SubResource("Resource_vff0f")])
 edge_map = {
 SubResource("Resource_6d5to"): [SubResource("Resource_t7vsf"), SubResource("Resource_6ryto"), SubResource("Resource_gjk6u"), SubResource("Resource_gjk6u"), SubResource("Resource_rmifb"), SubResource("Resource_hcrv3"), SubResource("Resource_7bbg2"), SubResource("Resource_6lrjw")],
 SubResource("Resource_j8fi1"): [SubResource("Resource_t7vsf"), SubResource("Resource_ts6fs")],
@@ -163,26 +162,3 @@ SubResource("Resource_73akb"): [SubResource("Resource_jcyh8"), SubResource("Reso
 SubResource("Resource_wv4kk"): [SubResource("Resource_b7bdw"), SubResource("Resource_wcfoj"), SubResource("Resource_1ckt5")],
 SubResource("Resource_hjtpt"): [SubResource("Resource_wcfoj"), SubResource("Resource_ts6fs"), SubResource("Resource_vff0f")]
 }
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_0bekn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c3spd"]
-albedo_color = Color(0.364706, 0.14902, 0.145098, 1)
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cnb7c"]
-
-[node name="Node3D" type="Node3D"]
-
-[node name="NetworkInstance" type="Node3D" parent="."]
-script = ExtResource("1_w8i8y")
-network = SubResource("Resource_8jmi5")
-metadata/_edit_lock_ = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_0bekn")
-surface_material_override/0 = SubResource("StandardMaterial3D_c3spd")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_cnb7c")
