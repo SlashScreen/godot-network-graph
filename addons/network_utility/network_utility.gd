@@ -5,7 +5,7 @@ extends EditorPlugin
 ## Container we add the toolbar to
 const container = CONTAINER_SPATIAL_EDITOR_MENU
 const RAY_LENGTH:float = 500
-const SNAP_DISTANCE:float = 0.5
+const SNAP_DISTANCE:float = 0.1
 
 ## The active [NetworkEditorUtility].
 var utility:NetworkEditorUtility
@@ -18,7 +18,12 @@ var target:Network:
 	set(val):
 		if target == val: # Prevent reinitializing a whole lot. may be redundant.
 			return
+		if target and target.redraw.is_connected(_redraw_gizmo.bind()):
+			# unsubscribe from redraw if we are changing selection
+			target.redraw.disconnect(_redraw_gizmo.bind())
 		target = val
+		if target:
+			target.redraw.connect(_redraw_gizmo.bind()) # subscribe to redraw
 		_set_toolbar_visibility(not val == null) # set toolbar visibility to true if it isnt null
 var _target_node:NetworkInstance
 
@@ -156,8 +161,16 @@ func _add_point(camera: Camera3D, event: InputEventMouseButton) -> void:
 	# Step 3: perform link or add
 	if linking: # we are linking
 		target.add_edge(link_target, network_gizmo.last_modified) # add between last selected and this one
+		network_gizmo.last_modified = link_target # set last modified to link target for easier chaining
 	else: # add new node
 		var new_pt = target.add_point(hit_pos)
 		# if there is something to link, try linking
 		if network_gizmo.last_modified:
 			target.add_edge(new_pt, network_gizmo.last_modified)
+		
+		network_gizmo.last_modified = new_pt # set last modified so we can chain
+
+
+func _redraw_gizmo():
+	if _target_node:
+		_target_node.update_gizmos()

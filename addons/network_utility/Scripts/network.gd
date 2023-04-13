@@ -12,6 +12,9 @@ extends Resource
 @export var edge_map:Dictionary = {}
 
 
+signal redraw
+
+
 ## Add a point to this network.
 func add_point(pt:Vector3) -> NetworkPoint:
 	# Create edge
@@ -21,6 +24,7 @@ func add_point(pt:Vector3) -> NetworkPoint:
 	# Add to points
 	points.append(new_point)
 
+	redraw.emit()
 	return new_point
 
 
@@ -38,6 +42,7 @@ func remove_point(pt:NetworkPoint) -> void:
 	
 	# Erase all entries in edge map.
 	edge_map.erase(pt)
+	redraw.emit()
 
 
 ## Dissolve a point in the network, connecting all nodes it was connected to together. See [method remove_point].
@@ -57,6 +62,8 @@ func dissolve_point(pt:NetworkPoint) -> void:
 	# For unique pairs of to connect, connect edge
 	for pair in _find_unique_pairs(to_connect):
 		add_edge(pair[0], pair[1])
+	
+	redraw.emit()
 
 
 ## Merge two points together and reconnect all connections.
@@ -87,6 +94,7 @@ func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 	for other in to_connect:
 		add_edge(new_node, other)
 
+	redraw.emit()
 	return new_node
 
 
@@ -109,6 +117,7 @@ func add_edge(a:NetworkPoint, b:NetworkPoint, cost:float = 1, bidirectional:bool
 	# Add to edges
 	edges.append(edge)
 
+	redraw.emit()
 	return edge
 
 
@@ -119,6 +128,8 @@ func remove_edge(edge:NetworkEdge) -> void:
 	edge_map[edge.point_b].erase(edge)
 	# Erase from edge database
 	edges.erase(edge)
+
+	redraw.emit()
 
 
 ## Find all unique pairs of an array
