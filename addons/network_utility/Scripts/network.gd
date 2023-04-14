@@ -133,13 +133,14 @@ func remove_edge(edge:NetworkEdge) -> void:
 
 
 ## Find all unique pairs of an array
-func _find_unique_pairs(arr:Array) -> Array[Array]:
-	var pairs = []
+func _find_unique_pairs(arr:Array):
+	# this sucks lol
+	var pairs = {}
 
 	for i in range(arr.size() - 1):
 		for j in range(i + 1, arr.size()):
-			if arr[i] == arr[j]:
-				continue
-			pairs.append([arr[i], arr[j]])
-
-	return pairs
+			var pair = [arr[i], arr[j]]
+			pair.sort_custom(func(a:NetworkPoint, b:NetworkPoint): return a.position.distance_squared_to(Vector3()) > b.position.distance_squared_to(Vector3())) # make sure [a, b] and [b, a] is the same thing
+			pairs[pair] = 1
+	
+	return pairs.keys()

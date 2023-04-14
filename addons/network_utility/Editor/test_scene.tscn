@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c06o33v04b0wn"]
+[gd_scene load_steps=24 format=3 uid="uid://c06o33v04b0wn"]
 
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="1_w8i8y"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="2_ekjdl"]
@@ -12,75 +12,13 @@ albedo_color = Color(0.364706, 0.14902, 0.145098, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cnb7c"]
 
-[sub_resource type="Resource" id="Resource_lcc6x"]
-script = ExtResource("2_ekjdl")
-position = Vector3(0.152234, 0, 0.0426671)
-
 [sub_resource type="Resource" id="Resource_gwnfj"]
 script = ExtResource("2_ekjdl")
 position = Vector3(-0.335263, 0, 0.656781)
 
-[sub_resource type="Resource" id="Resource_ft06i"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_gwnfj")
-point_b = SubResource("Resource_lcc6x")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_eysnp"]
-script = ExtResource("2_ekjdl")
-position = Vector3(0.731342, 0, 0.179384)
-
-[sub_resource type="Resource" id="Resource_1bp46"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_eysnp")
-point_b = SubResource("Resource_lcc6x")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_rksrs"]
-script = ExtResource("2_ekjdl")
-position = Vector3(0.335561, 0, -0.689713)
-
-[sub_resource type="Resource" id="Resource_81sts"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_rksrs")
-point_b = SubResource("Resource_lcc6x")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_h5xl2"]
-script = ExtResource("2_ekjdl")
-position = Vector3(0.145924, 0, 0.654762)
-
-[sub_resource type="Resource" id="Resource_4p5vx"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_lcc6x")
-point_b = SubResource("Resource_h5xl2")
-cost = 1.0
-bidirectional = true
-
 [sub_resource type="Resource" id="Resource_57t5f"]
 script = ExtResource("2_ekjdl")
 position = Vector3(-0.613626, 0, -0.559093)
-
-[sub_resource type="Resource" id="Resource_5f3os"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_57t5f")
-point_b = SubResource("Resource_lcc6x")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_nt5rw"]
-script = ExtResource("2_ekjdl")
-position = Vector3(0.600462, 0, 0.66581)
-
-[sub_resource type="Resource" id="Resource_0ihrj"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_nt5rw")
-point_b = SubResource("Resource_lcc6x")
-cost = 1.0
-bidirectional = true
 
 [sub_resource type="Resource" id="Resource_6bubo"]
 script = ExtResource("3_qq1ux")
@@ -89,24 +27,60 @@ point_b = SubResource("Resource_gwnfj")
 cost = 1.0
 bidirectional = true
 
-[sub_resource type="Resource" id="Resource_faib5"]
+[sub_resource type="Resource" id="Resource_nt5rw"]
+script = ExtResource("2_ekjdl")
+position = Vector3(0.600462, 0, 0.66581)
+
+[sub_resource type="Resource" id="Resource_5ygo5"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_nt5rw")
+point_b = SubResource("Resource_gwnfj")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_eysnp"]
+script = ExtResource("2_ekjdl")
+position = Vector3(0.695526, 0, -0.0598726)
+
+[sub_resource type="Resource" id="Resource_euurq"]
 script = ExtResource("3_qq1ux")
 point_a = SubResource("Resource_gwnfj")
-point_b = SubResource("Resource_h5xl2")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_ff8ix"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_rksrs")
-point_b = SubResource("Resource_57t5f")
-cost = 1.0
-bidirectional = true
-
-[sub_resource type="Resource" id="Resource_xo0yk"]
-script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_rksrs")
 point_b = SubResource("Resource_eysnp")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_qaucq"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_57t5f")
+point_b = SubResource("Resource_gwnfj")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_1qdc2"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_nt5rw")
+point_b = SubResource("Resource_gwnfj")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_3cjb5"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_gwnfj")
+point_b = SubResource("Resource_gwnfj")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_hxd45"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_57t5f")
+point_b = SubResource("Resource_eysnp")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_b8n4s"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_nt5rw")
+point_b = SubResource("Resource_57t5f")
 cost = 1.0
 bidirectional = true
 
@@ -117,25 +91,29 @@ point_b = SubResource("Resource_eysnp")
 cost = 1.0
 bidirectional = true
 
-[sub_resource type="Resource" id="Resource_88olu"]
+[sub_resource type="Resource" id="Resource_dtnej"]
 script = ExtResource("3_qq1ux")
-point_a = SubResource("Resource_h5xl2")
+point_a = SubResource("Resource_nt5rw")
+point_b = SubResource("Resource_eysnp")
+cost = 1.0
+bidirectional = true
+
+[sub_resource type="Resource" id="Resource_6xbdb"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_nt5rw")
 point_b = SubResource("Resource_nt5rw")
 cost = 1.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_fnh25"]
 script = ExtResource("4_7ieua")
-points = Array[ExtResource("2_ekjdl")]([SubResource("Resource_lcc6x"), SubResource("Resource_gwnfj"), SubResource("Resource_57t5f"), SubResource("Resource_rksrs"), SubResource("Resource_eysnp"), SubResource("Resource_nt5rw"), SubResource("Resource_h5xl2")])
-edges = Array[ExtResource("3_qq1ux")]([SubResource("Resource_ft06i"), SubResource("Resource_6bubo"), SubResource("Resource_ff8ix"), SubResource("Resource_2rhr6"), SubResource("Resource_88olu"), SubResource("Resource_faib5"), SubResource("Resource_1bp46"), SubResource("Resource_81sts"), SubResource("Resource_4p5vx"), SubResource("Resource_5f3os"), SubResource("Resource_0ihrj"), SubResource("Resource_xo0yk")])
+points = Array[ExtResource("2_ekjdl")]([SubResource("Resource_gwnfj"), SubResource("Resource_57t5f"), SubResource("Resource_eysnp"), SubResource("Resource_nt5rw")])
+edges = Array[ExtResource("3_qq1ux")]([SubResource("Resource_6bubo"), SubResource("Resource_2rhr6"), SubResource("Resource_5ygo5"), SubResource("Resource_euurq"), SubResource("Resource_qaucq"), SubResource("Resource_1qdc2"), SubResource("Resource_3cjb5"), SubResource("Resource_hxd45"), SubResource("Resource_dtnej"), SubResource("Resource_b8n4s"), SubResource("Resource_6xbdb")])
 edge_map = {
-SubResource("Resource_lcc6x"): [SubResource("Resource_ft06i"), SubResource("Resource_1bp46"), SubResource("Resource_81sts"), SubResource("Resource_4p5vx"), SubResource("Resource_5f3os"), SubResource("Resource_0ihrj")],
-SubResource("Resource_gwnfj"): [SubResource("Resource_ft06i"), SubResource("Resource_6bubo"), SubResource("Resource_faib5")],
-SubResource("Resource_57t5f"): [SubResource("Resource_6bubo"), SubResource("Resource_ff8ix"), SubResource("Resource_5f3os")],
-SubResource("Resource_rksrs"): [SubResource("Resource_ff8ix"), SubResource("Resource_81sts"), SubResource("Resource_xo0yk")],
-SubResource("Resource_eysnp"): [SubResource("Resource_2rhr6"), SubResource("Resource_1bp46"), SubResource("Resource_xo0yk")],
-SubResource("Resource_nt5rw"): [SubResource("Resource_2rhr6"), SubResource("Resource_88olu"), SubResource("Resource_0ihrj")],
-SubResource("Resource_h5xl2"): [SubResource("Resource_88olu"), SubResource("Resource_faib5"), SubResource("Resource_4p5vx")]
+SubResource("Resource_gwnfj"): [SubResource("Resource_6bubo"), SubResource("Resource_5ygo5"), SubResource("Resource_euurq"), SubResource("Resource_qaucq"), SubResource("Resource_1qdc2"), SubResource("Resource_3cjb5"), SubResource("Resource_3cjb5")],
+SubResource("Resource_57t5f"): [SubResource("Resource_6bubo"), SubResource("Resource_qaucq"), SubResource("Resource_hxd45"), SubResource("Resource_b8n4s")],
+SubResource("Resource_eysnp"): [SubResource("Resource_2rhr6"), SubResource("Resource_euurq"), SubResource("Resource_hxd45"), SubResource("Resource_dtnej")],
+SubResource("Resource_nt5rw"): [SubResource("Resource_2rhr6"), SubResource("Resource_5ygo5"), SubResource("Resource_1qdc2"), SubResource("Resource_dtnej"), SubResource("Resource_b8n4s"), SubResource("Resource_6xbdb"), SubResource("Resource_6xbdb")]
 }
 
 [node name="Node3D" type="Node3D"]
