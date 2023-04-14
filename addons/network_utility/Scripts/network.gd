@@ -53,7 +53,7 @@ func dissolve_point(pt:NetworkPoint) -> void:
 	var to_connect = []
 	# Loop through edges and get the other point.
 	for edge in edge_map[pt]:
-		to_connect.append(edge.point_a if edge.point_b == pt else edge.point_a)
+		to_connect.append(edge.point_a if edge.point_b == pt else edge.point_b)
 	# Remove the point and associated connections
 	remove_point(pt)
 	# For unique pairs of to connect, connect edge
@@ -72,7 +72,7 @@ func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 
 	# Add other side of edges for a
 	for edge in edge_map[a]:
-		var other = edge.point_a if edge.point_b == a else edge.point_a
+		var other = edge.point_a if edge.point_b == a else edge.point_b
 		# Skip connections to other node we are merging
 		if other == b:
 			continue
@@ -80,7 +80,7 @@ func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 		to_connect.append(other)
 	# Add other side of edges for b
 	for edge in edge_map[b]:
-		var other = edge.point_a if edge.point_b == b else edge.point_a
+		var other = edge.point_a if edge.point_b == b else edge.point_b
 		# Skip connections to other node we are merging
 		if other == a:
 			continue
