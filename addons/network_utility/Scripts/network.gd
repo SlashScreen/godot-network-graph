@@ -135,7 +135,7 @@ func remove_edge(edge:NetworkEdge) -> void:
 	redraw.emit()
 
 
-## Find an edge that contains both points
+## Find an edge that contains both points. Returns null if none found.
 func find_edge(a:NetworkPoint, b:NetworkPoint) -> NetworkEdge:
 	for edge in edge_map[a]:
 		if edge.point_a == a and edge.point_b == b:
@@ -152,23 +152,7 @@ func subdivide_edge(edge:NetworkEdge) -> NetworkPoint:
 	var new_node = add_point((edge.point_a.position + edge.point_b.position)/2)
 
 	# Get other connections
-	var to_connect = []
-	# Add other side of edges for a
-	for e in edge_map[edge.point_a]:
-		var other = e.point_a if e.point_b == edge.point_a else e.point_b
-		# Skip connections to other node we are merging
-		if other == edge.point_b:
-			continue
-		
-		to_connect.append(other)
-	# Add other side of edges for b
-	for e in edge_map[edge.point_b]:
-		var other = e.point_a if e.point_b == edge.point_b else e.point_b
-		# Skip connections to other node we are merging
-		if other == edge.point_a:
-			continue
-		
-		to_connect.append(other)
+	var to_connect = [edge.point_a, edge.point_b]
 	
 	remove_edge(edge) # remove the bubdivided edge
 

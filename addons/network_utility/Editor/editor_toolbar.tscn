@@ -45,6 +45,11 @@ text = "Dissolve
 "
 flat = true
 
+[node name="Subdivide" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Subdivide"
+flat = true
+
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
 
@@ -53,3 +58,4 @@ layout_mode = 2
 [connection signal="pressed" from="HBoxContainer/Remove" to="." method="_on_remove_pressed"]
 [connection signal="pressed" from="HBoxContainer/Merge" to="." method="_on_merge_pressed"]
 [connection signal="pressed" from="HBoxContainer/Dissolve" to="." method="_on_dissolve_pressed"]
+[connection signal="pressed" from="HBoxContainer/Subdivide" to="." method="_on_subdivide_pressed"]

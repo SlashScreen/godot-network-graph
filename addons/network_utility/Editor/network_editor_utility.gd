@@ -10,6 +10,7 @@ signal dissolve
 signal merge
 signal remove
 signal link
+signal subdivide
 
 
 func _on_add_toggled(button_pressed:bool) -> void:
@@ -29,3 +30,7 @@ func _on_remove_pressed() -> void:
 
 func _on_link_pressed() -> void:
 	link.emit()
+
+
+func _on_subdivide_pressed() -> void:
+	subdivide.emit()

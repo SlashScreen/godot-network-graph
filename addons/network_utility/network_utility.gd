@@ -38,6 +38,7 @@ func _enter_tree() -> void:
 	utility.merge.connect(_on_merge.bind())
 	utility.remove.connect(_on_remove.bind())
 	utility.dissolve.connect(_on_dissolve.bind())
+	utility.subdivide.connect(_on_subdivide.bind())
 
 	# Selection
 	get_editor_interface()\
@@ -136,6 +137,14 @@ func _on_link() -> void:
 	if target and network_gizmo.last_modified and network_gizmo.second_last_modified:
 		# Add an edge between the two last selected points
 		target.add_edge(network_gizmo.last_modified, network_gizmo.second_last_modified)
+
+
+func _on_subdivide() -> void:
+	if target and network_gizmo.last_modified and network_gizmo.second_last_modified:
+		var edge = target.find_edge(network_gizmo.last_modified, network_gizmo.second_last_modified)
+		if edge:
+			var middle_node = target.subdivide_edge(edge)
+			network_gizmo.last_modified = middle_node
 
 
 ## Add or link nodes.
