@@ -100,6 +100,9 @@ func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 
 ## Add an edge to this network.
 func add_edge(a:NetworkPoint, b:NetworkPoint, cost:float = 1, bidirectional:bool = true) -> NetworkEdge:
+	# return if it's bidirectional and an edge already exists connecting these nodes
+	if bidirectional and find_edge(a, b):
+		return null
 	# Create edge
 	var edge = NetworkEdge.new(a, b, cost, bidirectional)
 	# Add this edge to the edge map
@@ -130,6 +133,50 @@ func remove_edge(edge:NetworkEdge) -> void:
 	edges.erase(edge)
 
 	redraw.emit()
+
+
+## Find an edge that contains both points
+func find_edge(a:NetworkPoint, b:NetworkPoint) -> NetworkEdge:
+	for edge in edge_map[a]:
+		if edge.point_a == a and edge.point_b == b:
+			return edge
+		if edge.point_a == b and edge.point_b == a:
+			return edge
+
+	return null
+
+
+# Subdivide an edge into a node in the middle of two points, with two edges connecting all 3 nodes.
+func subdivide_edge(edge:NetworkEdge) -> NetworkPoint:
+	# Add a new node in between them
+	var new_node = add_point((edge.point_a.position + edge.point_b.position)/2)
+
+	# Get other connections
+	var to_connect = []
+	# Add other side of edges for a
+	for e in edge_map[edge.point_a]:
+		var other = e.point_a if e.point_b == edge.point_a else e.point_b
+		# Skip connections to other node we are merging
+		if other == edge.point_b:
+			continue
+		
+		to_connect.append(other)
+	# Add other side of edges for b
+	for e in edge_map[edge.point_b]:
+		var other = e.point_a if e.point_b == edge.point_b else e.point_b
+		# Skip connections to other node we are merging
+		if other == edge.point_a:
+			continue
+		
+		to_connect.append(other)
+	
+	remove_edge(edge) # remove the bubdivided edge
+
+	# Reconnect everything
+	for other in to_connect:
+		add_edge(new_node, other)
+
+	return new_node
 
 
 ## Find all unique pairs of an array
