@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=3 uid="uid://c06o33v04b0wn"]
+[gd_scene load_steps=29 format=3 uid="uid://c06o33v04b0wn"]
 
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_instance.gd" id="1_w8i8y"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_point.gd" id="2_ekjdl"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network_edge.gd" id="3_qq1ux"]
 [ext_resource type="Script" path="res://addons/network_utility/Scripts/network.gd" id="4_7ieua"]
+[ext_resource type="Script" path="res://addons/network_utility/Scripts/network_portal.gd" id="4_xopds"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0bekn"]
 
@@ -61,7 +62,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_3sk3p"]
 script = ExtResource("2_ekjdl")
-position = Vector3(0.122442, 0, -0.0479817)
+position = Vector3(0.112511, 0, -0.0384671)
 
 [sub_resource type="Resource" id="Resource_tny76"]
 script = ExtResource("3_qq1ux")
@@ -116,17 +117,30 @@ point_b = SubResource("Resource_nt5rw")
 cost = 1.0
 bidirectional = true
 
+[sub_resource type="Resource" id="Resource_s5883"]
+script = ExtResource("4_xopds")
+position = Vector3(0.330406, 0, -0.664006)
+
+[sub_resource type="Resource" id="Resource_b3sod"]
+script = ExtResource("3_qq1ux")
+point_a = SubResource("Resource_s5883")
+point_b = SubResource("Resource_3sk3p")
+cost = 1.0
+bidirectional = true
+
 [sub_resource type="Resource" id="Resource_fnh25"]
 script = ExtResource("4_7ieua")
-points = Array[ExtResource("2_ekjdl")]([SubResource("Resource_gwnfj"), SubResource("Resource_57t5f"), SubResource("Resource_eysnp"), SubResource("Resource_nt5rw"), SubResource("Resource_3sk3p")])
-edges = Array[ExtResource("3_qq1ux")]([SubResource("Resource_6bubo"), SubResource("Resource_2rhr6"), SubResource("Resource_5ygo5"), SubResource("Resource_qaucq"), SubResource("Resource_1qdc2"), SubResource("Resource_3cjb5"), SubResource("Resource_hxd45"), SubResource("Resource_dtnej"), SubResource("Resource_b8n4s"), SubResource("Resource_6xbdb"), SubResource("Resource_tny76"), SubResource("Resource_epjne")])
+points = Array[ExtResource("2_ekjdl")]([SubResource("Resource_gwnfj"), SubResource("Resource_57t5f"), SubResource("Resource_eysnp"), SubResource("Resource_nt5rw"), SubResource("Resource_3sk3p"), SubResource("Resource_s5883")])
+edges = Array[ExtResource("3_qq1ux")]([SubResource("Resource_6bubo"), SubResource("Resource_2rhr6"), SubResource("Resource_5ygo5"), SubResource("Resource_qaucq"), SubResource("Resource_1qdc2"), SubResource("Resource_3cjb5"), SubResource("Resource_hxd45"), SubResource("Resource_dtnej"), SubResource("Resource_b8n4s"), SubResource("Resource_6xbdb"), SubResource("Resource_tny76"), SubResource("Resource_epjne"), SubResource("Resource_b3sod")])
 edge_map = {
 SubResource("Resource_gwnfj"): [SubResource("Resource_6bubo"), SubResource("Resource_5ygo5"), SubResource("Resource_qaucq"), SubResource("Resource_1qdc2"), SubResource("Resource_3cjb5"), SubResource("Resource_3cjb5"), SubResource("Resource_tny76")],
 SubResource("Resource_57t5f"): [SubResource("Resource_6bubo"), SubResource("Resource_qaucq"), SubResource("Resource_hxd45"), SubResource("Resource_b8n4s")],
 SubResource("Resource_eysnp"): [SubResource("Resource_2rhr6"), SubResource("Resource_hxd45"), SubResource("Resource_dtnej"), SubResource("Resource_epjne")],
 SubResource("Resource_nt5rw"): [SubResource("Resource_2rhr6"), SubResource("Resource_5ygo5"), SubResource("Resource_1qdc2"), SubResource("Resource_dtnej"), SubResource("Resource_b8n4s"), SubResource("Resource_6xbdb"), SubResource("Resource_6xbdb")],
-SubResource("Resource_3sk3p"): [SubResource("Resource_tny76"), SubResource("Resource_epjne")]
+SubResource("Resource_3sk3p"): [SubResource("Resource_tny76"), SubResource("Resource_epjne"), SubResource("Resource_b3sod")],
+SubResource("Resource_s5883"): [SubResource("Resource_b3sod")]
 }
+portals = Array[ExtResource("4_xopds")]([SubResource("Resource_s5883")])
 
 [node name="Node3D" type="Node3D"]
 

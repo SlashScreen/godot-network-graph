@@ -4,6 +4,7 @@ extends Control
 
 
 var add_mode:bool
+var portal_mode:bool
 
 
 signal dissolve
@@ -11,10 +12,12 @@ signal merge
 signal remove
 signal link
 signal subdivide
+signal portal
 
 
 func _on_add_toggled(button_pressed:bool) -> void:
 	add_mode = button_pressed
+
 
 func _on_dissolve_pressed() -> void:
 	dissolve.emit()
@@ -34,3 +37,11 @@ func _on_link_pressed() -> void:
 
 func _on_subdivide_pressed() -> void:
 	subdivide.emit()
+
+
+func _on_portal_toggled(button_pressed:bool) -> void:
+	portal_mode = button_pressed
+
+
+func reset_portal_mode() -> void:
+	($"Box/Portal" as Button).button_pressed = false # will call signal automatically

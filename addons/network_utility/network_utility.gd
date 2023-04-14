@@ -94,7 +94,7 @@ func _forward_3d_gui_input(viewport_camera: Camera3D, event: InputEvent) -> int:
 		not (event as InputEventMouseButton).pressed:
 			return AFTER_GUI_INPUT_PASS
 	# If we passed all failure conditions, we block and add point
-	_add_point(viewport_camera, event)
+	_on_add_point(viewport_camera, event)
 	return AFTER_GUI_INPUT_STOP
 
 
@@ -147,16 +147,20 @@ func _on_subdivide() -> void:
 			network_gizmo.last_modified = middle_node
 
 
+func _on_add_point(camera: Camera3D, event: InputEventMouseButton) -> void:
+	_add_point(camera, event.position, utility.portal_mode)
+
+
 ## Add or link nodes.
-func _add_point(camera: Camera3D, event: InputEventMouseButton) -> void:
+func _add_point(camera: Camera3D, position:Vector2, portal:bool = false) -> void:
 	# return if no target
 	if not _target_node:
 		return
 	var hit_pos:Vector3
 
 	# Step 1: find hit point
-	var from = camera.project_ray_origin(event.position)
-	var to = from + (camera.project_ray_normal(event.position) * RAY_LENGTH)
+	var from = camera.project_ray_origin(position)
+	var to = from + (camera.project_ray_normal(position) * RAY_LENGTH)
 	var ray = PhysicsRayQueryParameters3D.create(from, to)
 	# wait for physics
 	await _target_node.get_tree().physics_frame
@@ -181,12 +185,14 @@ func _add_point(camera: Camera3D, event: InputEventMouseButton) -> void:
 		target.add_edge(link_target, network_gizmo.last_modified) # add between last selected and this one
 		network_gizmo.last_modified = link_target # set last modified to link target for easier chaining
 	else: # add new node
-		var new_pt = target.add_point(hit_pos)
+		var new_pt = target.add_point(hit_pos, portal)
 		# if there is something to link, try linking
 		if network_gizmo.last_modified:
 			target.add_edge(new_pt, network_gizmo.last_modified)
 		
 		network_gizmo.last_modified = new_pt # set last modified so we can chain
+	
+	utility.reset_portal_mode()
 
 
 func _redraw_gizmo():

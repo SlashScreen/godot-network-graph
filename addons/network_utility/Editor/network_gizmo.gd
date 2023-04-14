@@ -59,7 +59,7 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 		t.origin = n.position
 		# Draw node sphere and handle
 		handle_pts.append(n.position)
-		gizmo.add_mesh(mesh, _get_material_for_point(n, gizmo), t)
+		gizmo.add_mesh(CylinderMesh.new() if n is NetworkPortal else mesh, _get_material_for_point(n, gizmo), t)
 		# Handle indexes
 		handle_associations[idx] = n
 		handle_idx.append(idx)

@@ -10,19 +10,23 @@ extends Resource
 @export var edges:Array[NetworkEdge] = []
 ## This dictionary contains an array (value) of edges that involve a point (key).
 @export var edge_map:Dictionary = {}
+## The portals this network has.
+@export var portals:Array[NetworkPortal] = []
 
 
 signal redraw
 
 
 ## Add a point to this network.
-func add_point(pt:Vector3) -> NetworkPoint:
+func add_point(pt:Vector3, portal:bool = false) -> NetworkPoint:
 	# Create edge
-	var new_point = NetworkPoint.new(pt)
+	var new_point = NetworkPortal.new(pt) if portal else NetworkPoint.new(pt)
 	# Initialize map entry
 	edge_map[new_point] = []
 	# Add to points
 	points.append(new_point)
+	if portal:
+		portals.append(new_point)
 
 	redraw.emit()
 	return new_point
@@ -31,6 +35,9 @@ func add_point(pt:Vector3) -> NetworkPoint:
 ## Remove a point from the network and all associated connections. See [method dissolve_point].
 func remove_point(pt:NetworkPoint) -> void:
 	points.erase(pt)
+	if pt is NetworkPortal:
+		portals.erase(pt)
+	
 	var edges = edge_map[pt].duplicate()
 	# Remove all edges involving this node
 	for edge in edges:
@@ -160,6 +167,7 @@ func subdivide_edge(edge:NetworkEdge) -> NetworkPoint:
 	for other in to_connect:
 		add_edge(new_node, other)
 
+	redraw.emit()
 	return new_node
 
 
