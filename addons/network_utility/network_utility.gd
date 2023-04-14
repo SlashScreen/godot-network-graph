@@ -39,6 +39,7 @@ func _enter_tree() -> void:
 	utility.remove.connect(_on_remove.bind())
 	utility.dissolve.connect(_on_dissolve.bind())
 	utility.subdivide.connect(_on_subdivide.bind())
+	utility.unlink.connect(_on_unlink.bind())
 
 	# Selection
 	get_editor_interface()\
@@ -145,6 +146,13 @@ func _on_subdivide() -> void:
 		if edge:
 			var middle_node = target.subdivide_edge(edge)
 			network_gizmo.last_modified = middle_node
+
+
+func _on_unlink() -> void:
+	if target and network_gizmo.last_modified and network_gizmo.second_last_modified:
+		var edge = target.find_edge(network_gizmo.last_modified, network_gizmo.second_last_modified)
+		if edge:
+			target.remove_edge(edge)
 
 
 func _on_add_point(camera: Camera3D, event: InputEventMouseButton) -> void:

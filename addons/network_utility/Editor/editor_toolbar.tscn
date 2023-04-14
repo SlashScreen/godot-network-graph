@@ -22,16 +22,21 @@ toggle_mode = true
 text = "Add"
 flat = true
 
+[node name="Remove" type="Button" parent="Box"]
+layout_mode = 2
+text = "Remove
+"
+flat = true
+
 [node name="Link" type="Button" parent="Box"]
 layout_mode = 2
 text = "Link
 "
 flat = true
 
-[node name="Remove" type="Button" parent="Box"]
+[node name="Unlink" type="Button" parent="Box"]
 layout_mode = 2
-text = "Remove
-"
+text = "Unlink"
 flat = true
 
 [node name="Merge" type="Button" parent="Box"]
@@ -60,8 +65,9 @@ flat = true
 layout_mode = 2
 
 [connection signal="toggled" from="Box/Add" to="." method="_on_add_toggled"]
-[connection signal="pressed" from="Box/Link" to="." method="_on_link_pressed"]
 [connection signal="pressed" from="Box/Remove" to="." method="_on_remove_pressed"]
+[connection signal="pressed" from="Box/Link" to="." method="_on_link_pressed"]
+[connection signal="pressed" from="Box/Unlink" to="." method="_on_unlink_pressed"]
 [connection signal="pressed" from="Box/Merge" to="." method="_on_merge_pressed"]
 [connection signal="pressed" from="Box/Dissolve" to="." method="_on_dissolve_pressed"]
 [connection signal="pressed" from="Box/Subdivide" to="." method="_on_subdivide_pressed"]

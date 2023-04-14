@@ -12,7 +12,7 @@ signal merge
 signal remove
 signal link
 signal subdivide
-signal portal
+signal unlink
 
 
 func _on_add_toggled(button_pressed:bool) -> void:
@@ -45,3 +45,7 @@ func _on_portal_toggled(button_pressed:bool) -> void:
 
 func reset_portal_mode() -> void:
 	($"Box/Portal" as Button).button_pressed = false # will call signal automatically
+
+
+func _on_unlink_pressed() -> void:
+	unlink.emit()
