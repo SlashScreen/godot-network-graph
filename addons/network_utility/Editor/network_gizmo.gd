@@ -39,6 +39,9 @@ func _has_gizmo(for_node_3d: Node3D) -> bool:
 func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.clear()
 
+	if gizmo.get_node_3d().network.points.size() == 0:
+		return
+
 	# For each node:
 	var mesh = SphereMesh.new()
 

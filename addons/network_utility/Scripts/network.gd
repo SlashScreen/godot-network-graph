@@ -31,17 +31,14 @@ func add_point(pt:Vector3) -> NetworkPoint:
 ## Remove a point from the network and all associated connections. See [method dissolve_point].
 func remove_point(pt:NetworkPoint) -> void:
 	points.erase(pt)
+	var edges = edge_map[pt].duplicate()
 	# Remove all edges involving this node
-	for edge in edge_map[pt]:
-		# Get other point in the edge.
-		var other = edge.point_a if edge.point_b == pt else edge.point_a
-		# Erase edge from the other entry in the edge map, disconnecting it from both sides.
-		edge_map[other].erase(edge)
-		# Erase edge from edge list.
-		edges.erase(edge)
-	
+	for edge in edges:
+		remove_edge(edge)
 	# Erase all entries in edge map.
 	edge_map.erase(pt)
+	edges.clear()
+
 	redraw.emit()
 
 
@@ -90,6 +87,9 @@ func merge_points(a:NetworkPoint, b:NetworkPoint) -> NetworkPoint:
 		
 		to_connect.append(other)
 	
+	remove_point(a)
+	remove_point(b)
+
 	# Reconnect everything
 	for other in to_connect:
 		add_edge(new_node, other)

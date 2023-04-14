@@ -21,7 +21,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_bj2mu"]
 script = ExtResource("1_rxvme")
-position = Vector3(-0.382284, 0, -0.401735)
+position = Vector3(-0.0877409, 0, -0.0580046)
 
 [sub_resource type="Resource" id="Resource_6ryto"]
 script = ExtResource("2_impnr")

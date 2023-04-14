@@ -110,17 +110,26 @@ func _on_dissolve() -> void:
 		# dissolve selected point
 		target.dissolve_point(network_gizmo.last_modified)
 
+		network_gizmo.last_modified = null
+		network_gizmo.second_last_modified = null
+
 
 func _on_remove() -> void:
 	if target and network_gizmo.last_modified:
 		# remove selected point
 		target.remove_point(network_gizmo.last_modified)
 
+		network_gizmo.last_modified = null
+		network_gizmo.second_last_modified = null
+
 
 func _on_merge() -> void:
 	if target and network_gizmo.last_modified and network_gizmo.second_last_modified:
 		# Merge the last two selected points
 		target.merge_points(network_gizmo.last_modified, network_gizmo.second_last_modified)
+
+		network_gizmo.last_modified = null
+		network_gizmo.second_last_modified = null
 
 
 func _on_link() -> void:
