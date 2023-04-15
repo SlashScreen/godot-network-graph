@@ -40,6 +40,7 @@ func _enter_tree() -> void:
 	utility.dissolve.connect(_on_dissolve.bind())
 	utility.subdivide.connect(_on_subdivide.bind())
 	utility.unlink.connect(_on_unlink.bind())
+	utility.change_cost_accepted.connect(_change_cost.bind())
 
 	# Selection
 	get_editor_interface()\
@@ -201,6 +202,16 @@ func _add_point(camera: Camera3D, position:Vector2, portal:bool = false) -> void
 		network_gizmo.last_modified = new_pt # set last modified so we can chain
 	
 	utility.reset_portal_mode()
+
+
+func _change_cost(text:String) -> void:
+	if target and network_gizmo.last_modified and network_gizmo.second_last_modified:
+		var edge = target.find_edge(network_gizmo.last_modified, network_gizmo.second_last_modified)
+		if edge:
+			edge.cost = text.to_float()
+			return
+	
+	push_warning("must select two connected nodes")
 
 
 func _redraw_gizmo():

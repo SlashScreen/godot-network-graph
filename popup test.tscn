@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://chdmnkdl2firf"]
+
+[ext_resource type="Script" path="res://addons/network_utility/Editor/cost_popup.gd" id="1_iv6jl"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="SubViewport"]
+title = "Select new cost"
+position = Vector2i(525, 152)
+size = Vector2i(200, 153)
+visible = true
+script = ExtResource("1_iv6jl")
+
+[node name="LineEdit" type="LineEdit" parent="SubViewport/ConfirmationDialog"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "1"
+placeholder_text = "1"

@@ -62,7 +62,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_3sk3p"]
 script = ExtResource("2_ekjdl")
-position = Vector3(0.109199, 0, -0.0528019)
+position = Vector3(0.0871351, 0, -0.0304601)
 
 [sub_resource type="Resource" id="Resource_tny76"]
 script = ExtResource("3_qq1ux")
@@ -73,7 +73,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_s5883"]
 script = ExtResource("4_xopds")
-position = Vector3(0.332282, 0, -0.682541)
+position = Vector3(0.235831, 0, -0.748195)
 
 [sub_resource type="Resource" id="Resource_tg3dj"]
 script = ExtResource("3_qq1ux")
@@ -91,7 +91,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_eysnp"]
 script = ExtResource("2_ekjdl")
-position = Vector3(0.662144, 0, 0.10106)
+position = Vector3(0.698986, 0, 0.101639)
 
 [sub_resource type="Resource" id="Resource_2rhr6"]
 script = ExtResource("3_qq1ux")
@@ -116,13 +116,13 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_f8kv2"]
 script = ExtResource("2_ekjdl")
-position = Vector3(0.759093, 0, -0.363793)
+position = Vector3(0.745122, 0, -0.506081)
 
 [sub_resource type="Resource" id="Resource_doeux"]
 script = ExtResource("3_qq1ux")
 point_a = SubResource("Resource_eysnp")
 point_b = SubResource("Resource_f8kv2")
-cost = 1.0
+cost = 8.0
 bidirectional = true
 
 [sub_resource type="Resource" id="Resource_6xbdb"]
