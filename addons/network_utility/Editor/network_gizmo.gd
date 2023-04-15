@@ -19,6 +19,8 @@ var last_modified:NetworkPoint:
 ## Second last point that was selected.
 var second_last_modified:NetworkPoint
 
+var _plugin:EditorPlugin
+
 
 func _init() -> void:
 	create_material("edge", Color(0, 1, 0)) # Edge color
@@ -79,10 +81,6 @@ func _redraw(gizmo: EditorNode3DGizmo) -> void:
 	gizmo.add_handles(handle_pts, get_material("handles", gizmo), handle_idx)
 
 
-func _commit_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, restore, cancel: bool) -> void:
-	pass
-
-
 func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, camera: Camera3D, screen_pos: Vector2) -> void:
 	# get associated point
 	var pt = handle_associations[handle_id]
@@ -98,6 +96,23 @@ func _set_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, came
 		pt.position = hits["position"] as Vector3 # Set point position to handle
 		last_modified = pt # set last modified
 		_redraw(gizmo) # TODO: Don't update the whole thing (?)
+
+
+func _commit_handle(gizmo: EditorNode3DGizmo, handle_id: int, secondary: bool, restore, cancel: bool) -> void:
+	print("Commit handle %s that has restore %s " % [handle_id, restore])
+	# get associated point
+	var pt = handle_associations[handle_id]
+	# restore if cancel
+	if cancel:
+		pt.position = restore
+		return
+	
+
+	""" var ur = _plugin.get_undo_redo()
+	ur.create_action("Move Network Point")
+	ur.add_do_property(pt, "position", pt.position)
+	ur.add_undo_property(pt, "position", restore)
+	ur.commit_action() """
 
 
 ## Get the material for the point. This changed the material based on how recently it was selected.

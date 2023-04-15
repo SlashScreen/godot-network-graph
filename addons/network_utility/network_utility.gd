@@ -49,6 +49,7 @@ func _enter_tree() -> void:
 		.connect(_selection_changed.bind())
 	
 	# Gizmo
+	network_gizmo._plugin = self
 	add_node_3d_gizmo_plugin(network_gizmo)
 
 

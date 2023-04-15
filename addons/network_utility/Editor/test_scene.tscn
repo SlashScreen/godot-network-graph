@@ -30,7 +30,7 @@ bidirectional = true
 
 [sub_resource type="Resource" id="Resource_nt5rw"]
 script = ExtResource("2_ekjdl")
-position = Vector3(0.577467, 0, 0.678421)
+position = Vector3(0.545168, 0, 0.753685)
 
 [sub_resource type="Resource" id="Resource_5ygo5"]
 script = ExtResource("3_qq1ux")

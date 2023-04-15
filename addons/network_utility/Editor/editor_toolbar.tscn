@@ -25,14 +25,12 @@ flat = true
 
 [node name="Remove" type="Button" parent="Box"]
 layout_mode = 2
-text = "Remove
-"
+text = "Remove"
 flat = true
 
 [node name="Link" type="Button" parent="Box"]
 layout_mode = 2
-text = "Link
-"
+text = "Link"
 flat = true
 
 [node name="Unlink" type="Button" parent="Box"]
@@ -47,8 +45,7 @@ flat = true
 
 [node name="Dissolve" type="Button" parent="Box"]
 layout_mode = 2
-text = "Dissolve
-"
+text = "Dissolve"
 flat = true
 
 [node name="Subdivide" type="Button" parent="Box"]
